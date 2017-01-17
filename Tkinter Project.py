@@ -2,6 +2,21 @@ from Tkinter import * #gives us access to everything in the Tkinter class
 import tkMessageBox
 from PIL import Image, ImageTk
 
+def openfileR():
+    clearlist2()
+    f = open("Readme.txt", "r")
+    for line in f:
+        name = line[0:-1]
+        lisbox1.insert(END, name)
+    f.close()
+    findsize()
+   
+def openfileW():
+    f = open("Readme.txt", 'w')
+    names = listbox1.get(0, END)
+    for i in names:
+        f.write(i+"\n")
+
 
 def buttonpress():
     entrytext = entry1.get()
@@ -20,11 +35,29 @@ entry1.grid(row=5, column=0)
 
 
 label1 = Label(root, text="Contacts", bg="grey", anchor=W)
-label1.grid(row=4, column=0, sticky=EW, columnspan=3)
+label1.grid(row=1, column=0, sticky=EW, columnspan=2)
 
 image = Image.open("Logo.png")
-image = image.resize((1560,346))
+image = image.resize((1560,246))
 photo = ImageTk.PhotoImage(image)
+
+scrollbar = Scrollbar(root, orient=VERTICAL)
+listbox1 = Listbox(root, yscrollcommand=scrollbar.set)
+scrollbar.config(command=listbox1.yview)
+scrollbar.grid(row=2, column=0, rowspan=10, sticky=NS)
+listbox1.grid(row=8, column=0, columnspan=8, sticky=W, rowspan=3)
+
+
+menubar = Menu(root)
+filemenu = Menu(menubar, tearoff=0)
+filemenu.add_command(label="Open", command=openfileR)
+filemenu.add_separator()
+filemenu.add_command(label="Save", command=openfileW)
+
+menubar.add_cascade(label="File", menu=filemenu)
+
+root.config(menu=menubar)
+
 
 logo = Label(root, image=photo)
 logo.image = photo
