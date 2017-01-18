@@ -31,11 +31,11 @@ button1 = Button(root, text="Enter", bg="white", command=buttonpress)
 button1.grid(row=5, column=1)
 
 entry1 = Entry(root)
-entry1.grid(row=5, column=0)
+entry1.grid(row=6, column=1)
 
 
 label1 = Label(root, text="Contacts", bg="grey", anchor=W)
-label1.grid(row=1, column=0, sticky=EW, columnspan=2)
+label1.grid(row=1, column=0, sticky=W)
 
 image = Image.open("Logo.png")
 image = image.resize((1560,246))
@@ -44,8 +44,8 @@ photo = ImageTk.PhotoImage(image)
 scrollbar = Scrollbar(root, orient=VERTICAL)
 listbox1 = Listbox(root, yscrollcommand=scrollbar.set)
 scrollbar.config(command=listbox1.yview)
-scrollbar.grid(row=2, column=0, rowspan=10, sticky=NS)
-listbox1.grid(row=8, column=0, columnspan=8, sticky=W, rowspan=3)
+scrollbar.grid(row=9, column=0, rowspan=10)
+listbox1.grid(row=8, column=0, columnspan=7, sticky=SW, rowspan=4)
 
 
 menubar = Menu(root)
