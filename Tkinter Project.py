@@ -19,13 +19,42 @@ def openfileW():
 
 
 def buttonpress():
-    entrytext = entry1.get()
-    print entrytext
-    tkMessageBox.showinfo("Error", "Add new contact")   
+    #entrytext = entry1.get()
+   # print entrytext
+    tkMessageBox.showinfo("Error", "Add new contact")
+    
+def buttonpress1():
+    #entrytext = entry1.get()
+    #print entrytext
+    tkMessageBox.showinfo("Error", "Select contact from list")
+    
+def buttonpress2():
+    #entrytext = entry1.get()
+    #print entrytext
+    tkMessageBox.showinfo("Error", "Add new contact")  
+
+def buttonpress3():
+    #entrytext = entry1.get()
+    #print entrytext
+    tkMessageBox.showinfo("Error", "Delete contact")       
 
 
 root = Tk() #gives us a blank canvas object to work with
 root.title("The Book of Random Contacts")
+
+button1 = Button(root, text="Add", bg="grey", command=buttonpress)
+button1.grid(row=7, column=0)
+
+button2 = Button(root, text="Select", bg="grey", command=buttonpress1)
+button2.grid(row=7, column=2)
+
+button3 = Button(root, text="Add", bg="grey", command=buttonpress2)
+button3.grid(row=7, column=10)
+
+
+button4 = Button(root, text="Delete", bg="grey", command=buttonpress3)
+button4.grid(row=7, column=14)
+
 
 
 
@@ -43,6 +72,8 @@ scrollbar.config(command=listbox1.yview)
 scrollbar.grid(row=2, column=5, rowspan=5, sticky=W)
 listbox1.grid(row=2, column=0, columnspan=5, rowspan=5)
 listbox1.insert(END, "Andrew Flareau", "Ian Pope")
+
+
 
 menubar = Menu(root)
 filemenu = Menu(menubar, tearoff=0)
