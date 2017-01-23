@@ -49,11 +49,11 @@ button2 = Button(root, text="Select", bg="grey", command=buttonpress1)
 button2.grid(row=7, column=2)
 
 button3 = Button(root, text="Add", bg="grey", command=buttonpress2)
-button3.grid(row=7, column=10)
+button3.grid(row=7, column=26)
 
 
 button4 = Button(root, text="Delete", bg="grey", command=buttonpress3)
-button4.grid(row=7, column=14)
+button4.grid(row=7, column=28)
 
 
 
@@ -72,6 +72,9 @@ scrollbar.config(command=listbox1.yview)
 scrollbar.grid(row=2, column=5, rowspan=5, sticky=W)
 listbox1.grid(row=2, column=0, columnspan=5, rowspan=5)
 listbox1.insert(END, "Andrew Flareau", "Ian Pope")
+
+listbox2 = Listbox(root)
+listbox2.grid(row=2, column=26, columnspan=4, rowspan=5, sticky=E)
 
 
 
