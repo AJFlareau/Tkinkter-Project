@@ -18,10 +18,6 @@ def openfileW():
         f.write(i+"\n")
 
 
-def buttonpress():
-    #entrytext = entry1.get()
-   # print entrytext
-    tkMessageBox.showinfo("Error", "Add new contact")
     
 def buttonpress1():
     #entrytext = entry1.get()
@@ -31,7 +27,7 @@ def buttonpress1():
 def buttonpress2():
     #entrytext = entry1.get()
     #print entrytext
-    tkMessageBox.showinfo("Error", "Add new contact")  
+    tkMessageBox.showinfo("Error", "No contact saved")  
 
 def buttonpress3():
     #entrytext = entry1.get()
@@ -42,18 +38,14 @@ def buttonpress3():
 root = Tk() #gives us a blank canvas object to work with
 root.title("The Book of Random Contacts")
 
-button1 = Button(root, text="Add", bg="grey", command=buttonpress)
-button1.grid(row=7, column=0)
-
 button2 = Button(root, text="Select", bg="grey", command=buttonpress1)
 button2.grid(row=7, column=2)
 
-button3 = Button(root, text="Add", bg="grey", command=buttonpress2)
-button3.grid(row=7, column=26)
-
+button3 = Button(root, text="Save", bg="grey", command=buttonpress2)
+button3.grid(row=7, column=8)
 
 button4 = Button(root, text="Delete", bg="grey", command=buttonpress3)
-button4.grid(row=7, column=28)
+button4.grid(row=7, column=9)
 
 
 
@@ -71,10 +63,37 @@ listbox1 = Listbox(root, yscrollcommand=scrollbar.set)
 scrollbar.config(command=listbox1.yview)
 scrollbar.grid(row=2, column=5, rowspan=5, sticky=W)
 listbox1.grid(row=2, column=0, columnspan=5, rowspan=5)
-listbox1.insert(END, "Andrew Flareau", "Ian Pope")
+listbox1.insert(END, "Andrew Flareau", "Ian Pope","Fabian Trujillo")
 
-listbox2 = Listbox(root)
-listbox2.grid(row=2, column=26, columnspan=4, rowspan=5, sticky=E)
+label2 = Label(root, text="Name:")
+label2.grid(row=2, column=7)
+
+label3 = Label(root, text="Phone Number:")
+label3.grid(row=3, column=7)
+
+label4 = Label(root, text=" Email:")
+label4.grid(row=4, column=7)
+
+label5 = Label(root, text="Question:")
+label5.grid(row=5, column=7)
+
+label6 = Label(root, text="Answer:")
+label6.grid(row=6, column=7)
+
+label7 = Label(root, text="Whats your favorite food?")
+label7.grid(row=5, column=9)
+
+entry1 = Entry(root)
+entry1.grid(row=2, column=9)
+
+entry2 = Entry(root)
+entry2.grid(row=3, column=9)
+
+entry3 = Entry(root)
+entry3.grid(row=4, column=9)
+
+entry4 = Entry(root)
+entry4.grid(row=6, column=9)
 
 
 
@@ -91,6 +110,6 @@ root.config(menu=menubar)
 
 #logo = Label(root, image=photo)
 #logo.image = photo
-#logo.grid(row=0, column=0, columnspan=8) 
+#logo.grid()
 
 mainloop() #causes the windows to display on the screen until program closes
