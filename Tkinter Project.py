@@ -39,7 +39,7 @@ root = Tk() #gives us a blank canvas object to work with
 root.title("The Book of Random Contacts")
 
 button2 = Button(root, text="Select", bg="grey", command=buttonpress1)
-button2.grid(row=7, column=2)
+button2.grid(row=7, column=1)
 
 button3 = Button(root, text="Save", bg="grey", command=buttonpress2)
 button3.grid(row=7, column=8)
