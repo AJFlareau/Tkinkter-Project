@@ -14,10 +14,11 @@ def openfileR():
     print alist
    
 def openfileW():
-    f = open("Readme.txt", 'w')
-    names = listbox1.get(0, END)
-    for i in names:
+    global alist
+    f = open("Addresses.txt", 'w')
+    for i in alist:
         f.write(i+"\n")
+    f.close()
 
 def buttonpress1():
     x=listbox1.index(ACTIVE)
@@ -36,6 +37,7 @@ def buttonpress2():
     alist[idx+1]=entry2.get()
     alist[idx+2]=entry3.get()
     alist[idx+3]=entry4.get()
+    openfileW()
     print alist
       
 
@@ -48,9 +50,20 @@ def clearlist2():
     entry3.delete(0, END)
     entry4.delete(0, END)
 
+def buttonpress4():
+    listbox1.add(entry1)
+    listbox1.add(entry2)
+    listbox1.add(entry3)
+    listbox1.add(entry4)
+    
+    
+     
 
 root = Tk() #gives us a blank canvas object to work with
 root.title("The Book of Random Contacts")
+
+button1 = Button(root, text="Add Contact", bg="grey", command=buttonpress4)
+button1.grid(row=7, column=0)
 
 button2 = Button(root, text="Select", bg="grey", command=buttonpress1)
 button2.grid(row=7, column=1)
