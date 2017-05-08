@@ -12,22 +12,27 @@ def openfileR():
         alist.append(name)
     f.close()
     print alist
-   
+    for i in range(0, len(alist)):
+        if i % 4 == 0:
+            listbox1.insert (END, alist[i])
+            
 def openfileW():
     global alist
     f = open("Addresses.txt", 'w')
     for i in alist:
         f.write(i+"\n")
-    f.close()
-
+    f.close()    
+ 
 def buttonpress1():
+    clearlist2()
     x=listbox1.index(ACTIVE)
     idx=x*4
     entry1.insert(END,alist[idx])
     entry2.insert(END,alist[idx+1])
     entry3.insert(END,alist[idx+2])
     entry4.insert(END,alist[idx+3])
-    #tkMessageBox.showinfo("Error", "Select contact from list")
+    
+    
     
 def buttonpress2():
     global alist
@@ -42,7 +47,17 @@ def buttonpress2():
       
 
 def buttonpress3():
+    global alist
+    x=listbox1.index(ACTIVE)
+    listbox1.delete(x)
     clearlist2()
+    idx=x*4
+    alist.pop(idx) 
+    alist.pop(idx) 
+    alist.pop(idx) 
+    alist.pop(idx) 
+    print alist
+    
            
 def clearlist2():
     entry1.delete(0, END)
@@ -51,13 +66,11 @@ def clearlist2():
     entry4.delete(0, END)
 
 def buttonpress4():
-    listbox1.add(entry1)
-    listbox1.add(entry2)
-    listbox1.add(entry3)
-    listbox1.add(entry4)
-    
-    
-     
+    listbox1.insert(END, entry1.get())
+    alist.append(entry1.get())
+    alist.append(entry2.get())
+    alist.append(entry3.get())
+    alist.append(entry4.get())
 
 root = Tk() #gives us a blank canvas object to work with
 root.title("The Book of Random Contacts")
@@ -71,7 +84,7 @@ button2.grid(row=7, column=1)
 button3 = Button(root, text="Save", bg="grey", command=buttonpress2)
 button3.grid(row=7, column=8)
 
-button4 = Button(root, text="Clear", bg="grey", command=buttonpress3)
+button4 = Button(root, text="Delete", bg="grey", command=buttonpress3)
 button4.grid(row=7, column=9)
 
 label1 = Label(root, text="Contacts", bg="grey", anchor=W)
@@ -83,7 +96,7 @@ listbox1 = Listbox(root, yscrollcommand=scrollbar.set)
 scrollbar.config(command=listbox1.yview)
 scrollbar.grid(row=2, column=5, rowspan=5, sticky=W)
 listbox1.grid(row=2, column=0, columnspan=5, rowspan=5)
-listbox1.insert(END, "Andrew Flareau", "Ian Pope","Fabian Trujillo")
+
 
 label2 = Label(root, text="Name:")
 label2.grid(row=2, column=7)
@@ -138,4 +151,4 @@ root.config(menu=menubar)
 
 
 
-mainloop() #causes the windows to display on the screen until program closes
+mainloop()
